@@ -15,11 +15,13 @@ class PostView(APIView):
 
     permission_classes = (IsAuthenticated, )
 
+    # get posts
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all()
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
 
+    # add new post
     def post(self, request, *args, **kwargs):
         serializer = PostSerializer(data=request.data)
         # validate the data
