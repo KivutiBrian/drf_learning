@@ -13,8 +13,7 @@ from .models import Post
 # Create your views here.
 class PostView(APIView):
 
-    permission_classes = (IsAuthenticated, )
-
+    permission_classes = [IsAuthenticated]
     # get posts
     def get(self, request, *args, **kwargs):
         posts = Post.objects.all()
